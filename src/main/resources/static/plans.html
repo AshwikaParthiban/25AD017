@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GymFlex - Plans</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="plans">
+
+<header class="navbar">
+
+  <a href="index.html" class="logo">
+    Gym<span>Flex</span>
+  </a>
+
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="members.html">Members</a>
+    <a href="plans.html">Plans</a>
+    <a href="memberships.html">Memberships</a>
+    <a href="checkins.html">Check-In</a>
+  </nav>
+
+</header>
+
+<main class="container">
+
+  <div class="page-header">
+
+    <div>
+      <p class="label">PLANS</p>
+      <h1>Membership Plans</h1>
+      <p>Create and manage gym plans.</p>
+    </div>
+
+    <button
+            class="button"
+            onclick="showPlanForm()">
+      + Add Plan
+    </button>
+
+  </div>
+
+  <section class="panel hidden" id="planFormBox">
+
+    <h2>Add Plan</h2>
+
+    <form id="planForm">
+
+      <input
+              type="text"
+              id="planName"
+              placeholder="Plan name"
+              required
+      >
+
+      <input
+              type="number"
+              id="planDuration"
+              placeholder="Duration in months"
+              min="1"
+              required
+      >
+
+      <input
+              type="number"
+              id="planPrice"
+              placeholder="Price"
+              min="0"
+              step="0.01"
+              required
+      >
+
+      <div>
+
+        <button type="submit" class="button">
+          Save Plan
+        </button>
+
+        <button
+                type="button"
+                class="button secondary"
+                onclick="hidePlanForm()">
+          Cancel
+        </button>
+
+      </div>
+
+    </form>
+
+  </section>
+
+  <section class="plans" id="plansContainer"></section>
+
+</main>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

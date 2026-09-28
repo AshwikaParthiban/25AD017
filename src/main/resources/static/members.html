@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GymFlex - Members</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="members">
+
+<header class="navbar">
+
+  <a href="index.html" class="logo">
+    Gym<span>Flex</span>
+  </a>
+
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="members.html">Members</a>
+    <a href="plans.html">Plans</a>
+    <a href="memberships.html">Memberships</a>
+    <a href="checkins.html">Check-In</a>
+  </nav>
+
+</header>
+
+<main class="container">
+
+  <div class="page-header">
+
+    <div>
+      <p class="label">MEMBERS</p>
+      <h1>Member Management</h1>
+      <p>Manage your gym members.</p>
+    </div>
+
+    <button class="button" onclick="showMemberForm()">
+      + Add Member
+    </button>
+
+  </div>
+
+  <section class="panel hidden" id="memberFormBox">
+
+    <h2>Add Member</h2>
+
+    <form id="memberForm">
+
+      <input
+              type="text"
+              id="memberName"
+              placeholder="Member name"
+              required
+      >
+
+      <input
+              type="email"
+              id="memberEmail"
+              placeholder="Email"
+              required
+      >
+
+      <input
+              type="text"
+              id="memberPhone"
+              placeholder="Phone"
+              required
+      >
+
+      <div>
+        <button type="submit" class="button">
+          Save Member
+        </button>
+
+        <button
+                type="button"
+                class="button secondary"
+                onclick="hideMemberForm()">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+
+  </section>
+
+  <section class="panel">
+
+    <div class="panel-header">
+      <h2>All Members</h2>
+
+      <button
+              class="button secondary"
+              onclick="loadMembers()">
+        Refresh
+      </button>
+    </div>
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody id="membersTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+</main>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

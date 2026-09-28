@@ -3,45 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GymFlex</title>
-
+    <title>GymFlex - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-page="dashboard">
 
-<header>
-    <h1>GymFlex</h1>
-    <p>Gym Membership & Attendance Tracker</p>
+<header class="navbar">
+    <a href="index.html" class="logo">Gym<span>Flex</span></a>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="members.html">Members</a>
+        <a href="plans.html">Plans</a>
+        <a href="memberships.html">Memberships</a>
+        <a href="checkins.html">Check-In</a>
+    </nav>
 </header>
 
-<main>
+<main class="container">
 
-    <section class="card">
-        <h2>Add Member</h2>
+    <section class="hero">
+        <div>
+            <p class="label">GYM MANAGEMENT SYSTEM</p>
+            <h1>Welcome to GymFlex</h1>
+            <p>Manage members, plans, memberships and attendance.</p>
+        </div>
 
-        <input type="text" id="name" placeholder="Member Name">
-        <input type="email" id="email" placeholder="Email">
-        <input type="text" id="phone" placeholder="Phone">
-
-        <button onclick="addMember()">Add Member</button>
+        <a href="members.html" class="button">Manage Members</a>
     </section>
 
+    <section class="stats">
 
-    <section class="card">
+        <div class="stat">
+            <p>Total Members</p>
+            <h2 id="memberCount">0</h2>
+        </div>
 
-        <h2>Members</h2>
+        <div class="stat">
+            <p>Total Plans</p>
+            <h2 id="planCount">0</h2>
+        </div>
 
-        <button onclick="loadMembers()">Load Members</button>
+        <div class="stat">
+            <p>Active Memberships</p>
+            <h2 id="activeMembershipCount">0</h2>
+        </div>
 
-        <div id="members"></div>
+        <div class="stat">
+            <p>Expiring Soon</p>
+            <h2 id="expiringCount">0</h2>
+        </div>
+
+    </section>
+
+    <section class="panel">
+
+        <h2>Quick Actions</h2>
+
+        <div class="quick-grid">
+
+            <a href="members.html" class="quick-card">
+                <div>👤</div>
+                <strong>Members</strong>
+                <p>Add and manage members</p>
+            </a>
+
+            <a href="plans.html" class="quick-card">
+                <div>💳</div>
+                <strong>Plans</strong>
+                <p>Create gym plans</p>
+            </a>
+
+            <a href="memberships.html" class="quick-card">
+                <div>📅</div>
+                <strong>Memberships</strong>
+                <p>Create and renew memberships</p>
+            </a>
+
+            <a href="checkins.html" class="quick-card">
+                <div>✅</div>
+                <strong>Check-In</strong>
+                <p>Record daily attendance</p>
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="panel">
+
+        <h2>Memberships Expiring Soon</h2>
+
+        <div id="expiringList"></div>
 
     </section>
 
 </main>
 
-<script src="script.js"></script>
+<div id="toast"></div>
+
+<script src="app.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GymFlex - Memberships</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="memberships">
+
+<!-- ================= NAVIGATION ================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Gym<span>Flex</span>
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a href="members.html">
+            Members
+        </a>
+
+        <a href="plans.html">
+            Plans
+        </a>
+
+        <a href="memberships.html">
+            Memberships
+        </a>
+
+        <a href="checkins.html">
+            Check-In
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="container">
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="label">
+                MEMBERSHIPS
+            </p>
+
+            <h1>
+                Membership Management
+            </h1>
+
+            <p>
+                Create, renew and monitor gym memberships.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CREATE + RENEW ================= -->
+
+    <section class="two-column">
+
+
+        <!-- CREATE MEMBERSHIP -->
+
+        <div class="panel">
+
+            <h2>
+                Create Membership
+            </h2>
+
+            <p class="muted">
+                Assign a membership plan to a member.
+            </p>
+
+            <form id="membershipForm">
+
+                <label>
+                    Select Member
+                </label>
+
+                <select
+                        id="membershipMember"
+                        required>
+
+                    <option value="">
+                        Select member
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Select Plan
+                </label>
+
+                <select
+                        id="membershipPlan"
+                        required>
+
+                    <option value="">
+                        Select plan
+                    </option>
+
+                </select>
+
+
+                <button
+                        type="submit"
+                        class="button">
+
+                    Create Membership
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- RENEW MEMBERSHIP -->
+
+        <div class="panel">
+
+            <h2>
+                Renew Membership
+            </h2>
+
+            <p class="muted">
+                Extend an existing membership.
+            </p>
+
+            <form id="renewForm">
+
+                <label>
+                    Select Member
+                </label>
+
+                <select
+                        id="renewMember"
+                        required>
+
+                    <option value="">
+                        Select member
+                    </option>
+
+                </select>
+
+
+                <label>
+                    Select Plan
+                </label>
+
+                <select
+                        id="renewPlan"
+                        required>
+
+                    <option value="">
+                        Select plan
+                    </option>
+
+                </select>
+
+
+                <button
+                        type="submit"
+                        class="button dark">
+
+                    Renew Membership
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ALL MEMBERSHIPS ================= -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <p class="label">
+                    MEMBERSHIP RECORDS
+                </p>
+
+                <h2>
+                    All Memberships
+                </h2>
+
+            </div>
+
+            <button
+                    class="button secondary"
+                    onclick="loadMemberships()">
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Member
+                    </th>
+
+                    <th>
+                        Plan
+                    </th>
+
+                    <th>
+                        Start Date
+                    </th>
+
+                    <th>
+                        Expiry Date
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="membershipTable">
+
+                <!-- Memberships will be loaded here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EXPIRING MEMBERSHIPS ================= -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <p class="label">
+                    ATTENTION
+                </p>
+
+                <h2>
+                    Expiring Within 7 Days
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div id="expiringMemberships">
+
+            <!-- Expiring memberships will appear here -->
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<div id="toast"></div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
