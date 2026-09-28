@@ -26,13 +26,10 @@ public class MemberService {
     public Member getMemberById(Long id) {
         return memberRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException(
-                                "Member not found with ID: " + id));
+                        new RuntimeException("Member not found with ID: " + id));
     }
 
-    public Member updateMember(
-            Long id,
-            Member updatedMember) {
+    public Member updateMember(Long id, Member updatedMember) {
 
         Member existingMember = getMemberById(id);
 
@@ -44,9 +41,7 @@ public class MemberService {
     }
 
     public void deleteMember(Long id) {
-
         Member member = getMemberById(id);
-
         memberRepository.delete(member);
     }
 }

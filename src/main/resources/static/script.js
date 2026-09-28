@@ -8,7 +8,7 @@ async function addMember() {
 
     try {
 
-        const response = await fetch("/api/members", {
+        const response = await fetch("http://localhost:8081/api/members", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -42,7 +42,7 @@ async function loadMembers() {
 
     try {
 
-        const response = await fetch("/api/members");
+        const response = await fetch("http://localhost:8081/api/api/members");
 
         const members = await response.json();
 
