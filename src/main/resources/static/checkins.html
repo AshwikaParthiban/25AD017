@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymFlex - Plans</title>
+
+    <title>GymFlex - Check-In</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-page="plans">
+<body data-page="checkins">
+
+<!-- ================= NAVIGATION ================= -->
 
 <header class="navbar">
 
@@ -16,89 +21,216 @@
     </a>
 
     <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="members.html">Members</a>
-        <a href="plans.html">Plans</a>
-        <a href="memberships.html">Memberships</a>
-        <a href="checkins.html">Check-In</a>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a href="members.html">
+            Members
+        </a>
+
+        <a href="plans.html">
+            Plans
+        </a>
+
+        <a href="memberships.html">
+            Memberships
+        </a>
+
+        <a href="checkins.html">
+            Check-In
+        </a>
+
     </nav>
 
 </header>
 
+
+<!-- ================= MAIN ================= -->
+
 <main class="container">
+
+    <!-- PAGE HEADER -->
 
     <div class="page-header">
 
         <div>
-            <p class="label">PLANS</p>
-            <h1>Membership Plans</h1>
-            <p>Create and manage gym plans.</p>
-        </div>
 
-        <button
-                class="button"
-                onclick="showPlanForm()">
-            + Add Plan
-        </button>
+            <p class="label">
+                ATTENDANCE
+            </p>
+
+            <h1>
+                Daily Check-In
+            </h1>
+
+            <p>
+                Record and monitor member attendance.
+            </p>
+
+        </div>
 
     </div>
 
-    <section class="panel hidden" id="planFormBox">
 
-        <h2>Add Plan</h2>
+    <!-- ================= CHECK-IN ================= -->
 
-        <form id="planForm">
+    <section class="panel checkin-box">
 
-            <input
-                    type="text"
-                    id="planName"
-                    placeholder="Plan name"
-                    required
-            >
+        <h2>
+            Record Today's Check-In
+        </h2>
 
-            <input
-                    type="number"
-                    id="planDuration"
-                    placeholder="Duration in months"
-                    min="1"
-                    required
-            >
+        <p class="muted">
+            Select a member and record their attendance.
+        </p>
 
-            <input
-                    type="number"
-                    id="planPrice"
-                    placeholder="Price"
-                    min="0"
-                    step="0.01"
-                    required
-            >
+        <form id="checkinForm">
 
-            <div>
+            <label>
+                Select Member
+            </label>
 
-                <button type="submit" class="button">
-                    Save Plan
-                </button>
+            <select
+                    id="checkinMember"
+                    required>
 
-                <button
-                        type="button"
-                        class="button secondary"
-                        onclick="hidePlanForm()">
-                    Cancel
-                </button>
+                <option value="">
+                    Select member
+                </option>
 
-            </div>
+            </select>
+
+
+            <button
+                    type="submit"
+                    class="button">
+
+                ✓ Check In
+
+            </button>
 
         </form>
 
+        <p class="note">
+            An expired membership will automatically be rejected.
+            A member can check in only once per day.
+        </p>
+
     </section>
 
-    <section class="plans" id="plansContainer"></section>
+
+    <!-- ================= CURRENT MONTH ================= -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <p class="label">
+                    ATTENDANCE RECORDS
+                </p>
+
+                <h2>
+                    Current Month Check-Ins
+                </h2>
+
+            </div>
+
+            <button
+                    class="button secondary"
+                    onclick="loadCheckins()">
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Member
+                    </th>
+
+                    <th>
+                        Check-In Date
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="checkinTable">
+
+                <!-- Check-ins will appear here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ATTENDANCE COUNT ================= -->
+
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <p class="label">
+                    MONTHLY SUMMARY
+                </p>
+
+                <h2>
+                    Attendance Count
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div
+                id="attendanceCounts"
+                class="attendance-grid">
+
+            <!-- Attendance counts appear here -->
+
+        </div>
+
+    </section>
 
 </main>
 
+
+<!-- ================= MESSAGE ================= -->
+
 <div id="toast"></div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script src="app.js"></script>
 
 </body>
+
 </html>
